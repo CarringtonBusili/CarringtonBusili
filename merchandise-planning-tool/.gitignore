@@ -12,6 +12,10 @@ frontend/dist/
 frontend/.vite/
 frontend/tsconfig.tsbuildinfo
 
+# Streamlit
+streamlit_app/.venv/
+streamlit_app/__pycache__/
+
 # OS / editor
 .DS_Store
 *.log

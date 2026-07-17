@@ -11,6 +11,9 @@ SKU-level demand and recommends what to buy.
 - **Frontend**: React + TypeScript + Vite + Tailwind + Recharts. Three views:
   Overview (KPI dashboard), AI Buying (recommendation table), and per-product
   forecast detail.
+- **Streamlit build** (`streamlit_app/`): the same three views as a single
+  Python app, for quick internal sharing without standing up the API/React
+  stack. Imports `backend/app/{data_gen,kpis,forecasting}.py` directly.
 
 ## KPIs tracked
 
@@ -64,6 +67,65 @@ npm run dev
 ```
 
 Open `http://localhost:5173` (Vite proxies `/api` to `http://localhost:8000`).
+
+### Streamlit build
+
+```bash
+cd streamlit_app
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Open `http://localhost:8501`. No separate API process needed — it imports
+the backend's data/KPI/forecasting modules in-process and caches the trained
+models with `st.cache_resource`.
+
+## Deploying the Streamlit app (Streamlit Community Cloud)
+
+1. **Push this repo to GitHub** (already done if you're reading this from
+   the repo). Streamlit Cloud deploys straight from a GitHub branch — no
+   Dockerfile or build config needed.
+2. **Go to [share.streamlit.io](https://share.streamlit.io)** and sign in
+   with GitHub. Authorize Streamlit to access this repository (or your fork)
+   if prompted.
+3. Click **"New app"** → **"Deploy a public app from GitHub"** (or "From
+   existing repo") and fill in:
+   - **Repository**: `CarringtonBusili/CarringtonBusili`
+   - **Branch**: the branch you want live (e.g. `main`, or this feature
+     branch)
+   - **Main file path**: `merchandise-planning-tool/streamlit_app/app.py`
+   - App URL: pick a subdomain, e.g. `merch-planning-buying`
+4. **Dependencies**: Streamlit Cloud auto-installs from the
+   `requirements.txt` in the same folder as the main file
+   (`streamlit_app/requirements.txt`) — nothing else to configure. If you
+   need a specific Python version, add a `runtime.txt` (e.g. `3.11`) next to
+   `app.py`, or set it under "Advanced settings" before deploying.
+5. Click **Deploy**. First boot takes longer than usual — it's not just
+   installing packages, it's also running the app once to simulate the
+   2-year history and train the 19 per-SKU forecast models
+   (`st.cache_resource`, so this only happens on cold start / after a
+   reboot, not per user session).
+6. **Managing it afterward** (via the app's "⋮" menu on share.streamlit.io):
+   - **Reboot app** — clears the cache and re-trains, e.g. after pushing new
+     commits (Streamlit Cloud also auto-redeploys on push to the tracked
+     branch).
+   - **Logs** — for debugging a failed boot or exception.
+   - **Settings → Secrets** — not needed here (no API keys or credentials
+     used), but this is where `st.secrets` values would go if added later.
+   - **Delete app** — tears it down and frees the subdomain.
+7. No separate backend deploy is needed for this build — `streamlit_app/`
+   imports `backend/app/` directly from the same repo checkout, so a single
+   Streamlit Cloud app is the whole deployment.
+
+**Pinned versions matter here**: `streamlit_app/requirements.txt` pins
+`streamlit==1.59.2`. Streamlit's dataframe/chart rendering depends on a
+matching `pyarrow` build; leaving `streamlit` on an old pin while `pyarrow`
+resolves to whatever's newest at install time can crash the app's Python
+process outright (this happened during development — traced to
+`streamlit==1.38.0` against an unpinned, much newer `pyarrow`). If you bump
+`streamlit`, let `pip` re-resolve `pyarrow` rather than pinning it
+separately.
 
 ## API endpoints
 
