@@ -9,8 +9,10 @@ import streamlit as st
 
 from src import theme
 from src.loader import get_markdown_report
+from src.sidebar import render_data_source_status
 
 st.set_page_config(page_title="Predictive Markdown", page_icon="🏷️", layout="wide")
+render_data_source_status()
 
 st.title("🏷️ Predictive Markdown and Lifecycle Elasticity")
 st.caption(

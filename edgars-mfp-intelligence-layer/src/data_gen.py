@@ -103,21 +103,29 @@ AFFINITY = {
 }
 
 
-def build_calendar() -> pd.DataFrame:
-    weeks = pd.date_range(config.HISTORY_START, periods=config.N_WEEKS, freq="W-MON")
-    df = pd.DataFrame({"week_start": weeks, "week_num": range(config.N_WEEKS)})
+def _is_school_term_window(d) -> bool:
+    for mmdd in config.SCHOOL_TERM_STARTS_MMDD:
+        month, day = (int(x) for x in mmdd.split("-"))
+        term_start = pd.Timestamp(year=d.year, month=month, day=day)
+        if -14 <= (d - term_start).days <= 7:
+            return True
+    return False
 
-    def _is_school_term_window(d):
-        for mmdd in config.SCHOOL_TERM_STARTS_MMDD:
-            month, day = (int(x) for x in mmdd.split("-"))
-            term_start = pd.Timestamp(year=d.year, month=month, day=day)
-            if -14 <= (d - term_start).days <= 7:
-                return True
-        return False
 
+def calendar_from_weeks(weeks: pd.DatetimeIndex) -> pd.DataFrame:
+    """Build the school-term / tobacco-season calendar for an arbitrary
+    sequence of week-start dates — shared by the synthetic generator and
+    the real-data ingest path, since both are Zimbabwe-specific facts
+    about the calendar, not about the data source."""
+    df = pd.DataFrame({"week_start": weeks, "week_num": range(len(weeks))})
     df["school_term_window"] = df["week_start"].apply(_is_school_term_window)
     df["tobacco_season"] = df["week_start"].dt.month.isin(config.TOBACCO_SEASON_MONTHS)
     return df
+
+
+def build_calendar() -> pd.DataFrame:
+    weeks = pd.date_range(config.HISTORY_START, periods=config.N_WEEKS, freq="W-MON")
+    return calendar_from_weeks(weeks)
 
 
 def build_macro_series(calendar: pd.DataFrame) -> pd.DataFrame:

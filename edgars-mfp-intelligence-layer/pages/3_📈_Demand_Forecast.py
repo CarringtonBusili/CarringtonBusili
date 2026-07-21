@@ -9,8 +9,10 @@ import streamlit as st
 
 from src import forecast, theme
 from src.loader import get_data, get_forecast_bundle
+from src.sidebar import render_data_source_status
 
 st.set_page_config(page_title="Demand Forecast", page_icon="📈", layout="wide")
+render_data_source_status()
 
 st.title("📈 The Localised Demand-Forecasting Brain")
 st.caption(

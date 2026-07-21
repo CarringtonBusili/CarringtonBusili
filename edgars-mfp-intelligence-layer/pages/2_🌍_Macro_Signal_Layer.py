@@ -9,8 +9,10 @@ import streamlit as st
 
 from src import macro_signals, theme
 from src.loader import get_data
+from src.sidebar import render_data_source_status
 
 st.set_page_config(page_title="Macro Signal Layer", page_icon="🌍", layout="wide")
+render_data_source_status()
 
 st.title("🌍 The Zimbabwe Macro Signal Layer")
 st.caption(

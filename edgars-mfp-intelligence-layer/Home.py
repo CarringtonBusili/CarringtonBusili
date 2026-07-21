@@ -1,13 +1,16 @@
 import streamlit as st
 
 from src import theme  # noqa: F401 (registers the shared Plotly template)
-from src.loader import get_diagnostic_report
+from src.loader import data_meta, get_diagnostic_report
+from src.sidebar import render_data_source_controls
 
 st.set_page_config(
     page_title="Edgars MFP Intelligence Layer",
     page_icon="🧠",
     layout="wide",
 )
+
+render_data_source_controls()
 
 st.title("🧠 The Localised MFP Intelligence Layer")
 st.caption(
@@ -16,16 +19,27 @@ st.caption(
     "Edgars Executive Committee."
 )
 
-st.info(
-    "**This is a working simulation, not Edgars' real data.** No live Edgars/D365 extract "
-    "exists for this demo, so every store, sale, till reading and FX series here is "
-    "synthetically generated (fixed random seed, reproducible) to the shape described in the "
-    "blueprint — 27 stores across 5 local-economy profiles, 8 apparel categories, 104 weeks "
-    "of history. The engines below (forecast, Capital-Weighted OTB, Predictive Markdown, "
-    "Dynamic Assortment) are fully functional against this data and are exactly what would run "
-    "against a real Phase 1 flat-file extract.",
-    icon="🧪",
-)
+meta = data_meta()
+if meta.get("source") == "upload":
+    st.success(
+        f"**Running on your uploaded extract** — {meta.get('file_name')}: "
+        f"{meta.get('n_stores')} stores, {meta.get('n_categories')} categories, "
+        f"{meta.get('n_weeks')} weeks. Every engine below (forecast, Capital-Weighted OTB, "
+        "Predictive Markdown, Dynamic Assortment) is now running on this real data, exactly as "
+        "it would against a full Phase 1 extract. Switch back to demo data any time from the "
+        "sidebar.",
+        icon="✅",
+    )
+else:
+    st.info(
+        "**This is a working simulation, not Edgars' real data.** No live Edgars/D365 extract "
+        "has been uploaded, so every store, sale, till reading and FX series here is "
+        "synthetically generated (fixed random seed, reproducible) to the shape described in the "
+        "blueprint — 27 stores across 5 local-economy profiles, 8 apparel categories, 104 weeks "
+        "of history. **Upload your own flat-file extract from the sidebar** to run every engine "
+        "below on real numbers instead.",
+        icon="🧪",
+    )
 
 st.subheader("The gap this closes")
 col1, col2 = st.columns(2)
@@ -44,7 +58,10 @@ with col2:
     )
 
 st.divider()
-st.subheader("Phase 1 Historical Diagnostic — headline numbers, from this simulation")
+if meta.get("source") == "upload":
+    st.subheader("Phase 1 Historical Diagnostic — headline numbers, from your data")
+else:
+    st.subheader("Phase 1 Historical Diagnostic — headline numbers, from this simulation")
 
 report = get_diagnostic_report()
 s = report["summary"]
@@ -73,12 +90,21 @@ k4.metric(
     delta_color="off",
 )
 
-st.caption(
-    "These are simulated figures illustrating the mechanics described in Blueprint section 2 "
-    "(working capital liberation, carrying-cost penalty, margin preservation, supply-chain "
-    "resilience) — not an audit of Edgars' actual position. Phase 1 replaces this page with "
-    "real, audited numbers from Edgars' own extract."
-)
+if meta.get("source") == "upload":
+    st.caption(
+        "Computed directly from your uploaded extract, following the same mechanics as "
+        "Blueprint section 2 (working capital liberation, carrying-cost penalty, margin "
+        "preservation, supply-chain resilience). Note: 'margin lost to stock-outs' needs an "
+        "unconstrained-demand signal that a sales-only extract can't provide, so it reads $0 "
+        "unless your data includes it separately."
+    )
+else:
+    st.caption(
+        "These are simulated figures illustrating the mechanics described in Blueprint section 2 "
+        "(working capital liberation, carrying-cost penalty, margin preservation, supply-chain "
+        "resilience) — not an audit of Edgars' actual position. Upload your own extract from the "
+        "sidebar to replace this with real, audited numbers."
+    )
 
 st.divider()
 st.subheader("Explore the engines")

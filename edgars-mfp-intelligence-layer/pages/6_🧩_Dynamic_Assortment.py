@@ -8,8 +8,10 @@ import streamlit as st
 
 from src import theme
 from src.loader import get_assortment_report
+from src.sidebar import render_data_source_status
 
 st.set_page_config(page_title="Dynamic Assortment", page_icon="🧩", layout="wide")
+render_data_source_status()
 
 st.title("🧩 Dynamic Micro-Clustering and Assortment")
 st.caption(
