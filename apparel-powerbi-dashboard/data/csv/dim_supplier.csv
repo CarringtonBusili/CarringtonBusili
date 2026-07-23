@@ -1,0 +1,11 @@
+supplier_id,supplier_name,supplier_type,country,lead_time_days,payment_terms_days
+SUP01,Meridian Manufacturing – Plant A,Internal Manufacturing,Home Market,21,0
+SUP02,Meridian Manufacturing – Plant B,Internal Manufacturing,Home Market,28,0
+SUP03,Delta Textile Mills,External,Regional,35,30
+SUP04,Horizon Garments Co.,External,Import,56,45
+SUP05,Stridewell Footwear,External,Import,63,45
+SUP06,Coastal Home Textiles,External,Regional,28,30
+SUP07,Everyday Accessories Ltd,External,Import,42,30
+SUP08,ActiveGear Sportswear,External,Import,49,45
+SUP09,SchoolBrand Uniforms,External,Home Market,21,30
+SUP10,Northline Denim Co.,External,Regional,35,30

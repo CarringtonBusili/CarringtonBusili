@@ -1,0 +1,41 @@
+product_id,product_name,product_group,department,category,size,colour,supplier_id,source_type,unit_cost,unit_price,base_weekly_units_per_store,moq,reorder_cycle_weeks
+SKU0001,Menswear Shirts 1,Apparel,Menswear,Shirts,XS,Black,SUP01,Own Manufacture,13.45,29.14,7,250,8
+SKU0002,Menswear Trousers 2,Apparel,Menswear,Trousers,S,Navy,SUP01,Own Manufacture,13.13,28.45,5,250,8
+SKU0003,Menswear Denim 3,Apparel,Menswear,Denim,M,White,SUP01,Own Manufacture,13.4,29.03,10,250,4
+SKU0004,Menswear Shirts 4,Apparel,Menswear,Shirts,L,Grey,SUP01,Own Manufacture,12.09,26.2,7,150,8
+SKU0005,Menswear Trousers 5,Apparel,Menswear,Trousers,XL,Print,SUP01,Own Manufacture,12.9,27.96,10,250,6
+SKU0006,Womenswear Dresses 1,Apparel,Womenswear,Dresses,XS,Black,SUP01,Own Manufacture,10.22,26.03,10,400,4
+SKU0007,Womenswear Knitwear 2,Apparel,Womenswear,Knitwear,S,Navy,SUP01,Own Manufacture,12.54,31.91,10,150,8
+SKU0008,Womenswear Denim 3,Apparel,Womenswear,Denim,M,White,SUP01,Own Manufacture,10.71,27.27,13,250,8
+SKU0009,Womenswear Dresses 4,Apparel,Womenswear,Dresses,L,Grey,SUP01,Own Manufacture,12.35,31.43,7,200,6
+SKU0010,Womenswear Knitwear 5,Apparel,Womenswear,Knitwear,XL,Print,SUP01,Own Manufacture,9.52,24.23,7,300,8
+SKU0011,Kidswear Playwear 1,Apparel,Kidswear,Playwear,XS,Black,SUP02,Own Manufacture,7.77,17.77,15,250,4
+SKU0012,Kidswear Knitwear 2,Apparel,Kidswear,Knitwear,S,Navy,SUP02,Own Manufacture,6.86,15.67,11,300,4
+SKU0013,Kidswear Playwear 3,Apparel,Kidswear,Playwear,M,White,SUP02,Own Manufacture,6.27,14.33,11,200,4
+SKU0014,Kidswear Knitwear 4,Apparel,Kidswear,Knitwear,L,Grey,SUP02,Own Manufacture,7.59,17.35,10,150,8
+SKU0015,Kidswear Playwear 5,Apparel,Kidswear,Playwear,XL,Print,SUP02,Own Manufacture,7.67,17.52,9,300,8
+SKU0016,School Uniforms Uniform Sets 1,Apparel,School Uniforms,Uniform Sets,XS,Black,SUP09,External,10.19,22.63,6,400,4
+SKU0017,School Uniforms Uniform Basics 2,Apparel,School Uniforms,Uniform Basics,S,Navy,SUP09,External,9.8,21.78,5,400,4
+SKU0018,School Uniforms Uniform Sets 3,Apparel,School Uniforms,Uniform Sets,M,White,SUP09,External,7.67,17.05,8,300,6
+SKU0019,School Uniforms Uniform Basics 4,Apparel,School Uniforms,Uniform Basics,L,Grey,SUP09,External,9.87,21.94,8,250,6
+SKU0020,School Uniforms Uniform Sets 5,Apparel,School Uniforms,Uniform Sets,XL,Print,SUP09,External,9.44,20.98,5,200,4
+SKU0021,Sportswear Activewear 1,Apparel,Sportswear,Activewear,XS,Black,SUP08,External,14.09,32.52,4,400,6
+SKU0022,Sportswear Outerwear 2,Apparel,Sportswear,Outerwear,S,Navy,SUP08,External,14.53,33.53,5,250,6
+SKU0023,Sportswear Activewear 3,Apparel,Sportswear,Activewear,M,White,SUP08,External,13.59,31.37,3,300,4
+SKU0024,Sportswear Outerwear 4,Apparel,Sportswear,Outerwear,L,Grey,SUP08,External,13.04,30.09,3,200,6
+SKU0025,Sportswear Activewear 5,Apparel,Sportswear,Activewear,XL,Print,SUP08,External,14.93,34.46,3,400,4
+SKU0026,Footwear Casual 1,Footwear,Footwear,Casual,3,Black,SUP05,External,14.23,32.25,4,250,6
+SKU0027,Footwear School Shoes 2,Footwear,Footwear,School Shoes,4,Navy,SUP05,External,15.67,35.53,6,400,6
+SKU0028,Footwear Casual 3,Footwear,Footwear,Casual,5,White,SUP05,External,14.88,33.74,6,200,4
+SKU0029,Footwear School Shoes 4,Footwear,Footwear,School Shoes,6,Grey,SUP05,External,12.87,29.17,3,300,8
+SKU0030,Footwear Casual 5,Footwear,Footwear,Casual,7,Print,SUP05,External,15.17,34.4,3,400,6
+SKU0031,Home & Textiles Bedding 1,Home & Textiles,Home & Textiles,Bedding,XS,Black,SUP06,External,7.23,17.16,4,250,6
+SKU0032,Home & Textiles Towels 2,Home & Textiles,Home & Textiles,Towels,S,Navy,SUP06,External,7.87,18.68,3,300,6
+SKU0033,Home & Textiles Bedding 3,Home & Textiles,Home & Textiles,Bedding,M,White,SUP06,External,7.81,18.56,2,200,4
+SKU0034,Home & Textiles Towels 4,Home & Textiles,Home & Textiles,Towels,L,Grey,SUP06,External,9.49,22.55,4,250,8
+SKU0035,Home & Textiles Bedding 5,Home & Textiles,Home & Textiles,Bedding,XL,Print,SUP06,External,7.54,17.92,5,200,8
+SKU0036,Accessories Bags 1,Accessories,Accessories,Bags,XS,Black,SUP07,External,4.4,11.01,5,300,4
+SKU0037,Accessories Belts & Small Leather 2,Accessories,Accessories,Belts & Small Leather,S,Navy,SUP07,External,3.53,8.84,7,150,6
+SKU0038,Accessories Bags 3,Accessories,Accessories,Bags,M,White,SUP07,External,3.68,9.21,5,400,6
+SKU0039,Accessories Belts & Small Leather 4,Accessories,Accessories,Belts & Small Leather,L,Grey,SUP07,External,3.65,9.12,7,150,8
+SKU0040,Accessories Bags 5,Accessories,Accessories,Bags,XL,Print,SUP07,External,4.41,11.02,5,200,6

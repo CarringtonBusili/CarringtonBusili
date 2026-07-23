@@ -1,0 +1,16 @@
+store_id,store_name,chain_code,chain_name,store_format,region,size_sqm,open_date,cash_propensity
+ST001,Meridian Fashion Northern 1,MER,Meridian Fashion,Department Store,Northern,2328,2020-06-06,0.41003609566451654
+ST002,Meridian Fashion Central 2,MER,Meridian Fashion,Department Store,Central,2236,2022-11-04,0.24582563945101454
+ST003,Meridian Fashion Coastal 3,MER,Meridian Fashion,Department Store,Coastal,2313,2018-01-01,0.34865590739965685
+ST004,Meridian Fashion Western 4,MER,Meridian Fashion,Department Store,Western,1940,2020-11-27,0.4122233548343158
+ST005,Meridian Fashion Metro 5,MER,Meridian Fashion,Department Store,Metro,2172,2017-09-29,0.3874007473801636
+ST006,Meridian Fashion Northern 6,MER,Meridian Fashion,Department Store,Northern,1672,2019-08-16,0.27328939193368007
+ST007,Urban Basics Northern 1,URB,Urban Basics,Value Apparel,Northern,1013,2019-01-31,0.5352110109163792
+ST008,Urban Basics Central 2,URB,Urban Basics,Value Apparel,Central,777,2016-09-16,0.5376376414344959
+ST009,Urban Basics Coastal 3,URB,Urban Basics,Value Apparel,Coastal,989,2022-02-20,0.592584734844268
+ST010,Urban Basics Western 4,URB,Urban Basics,Value Apparel,Western,621,2022-06-03,0.5844656802406306
+ST011,Urban Basics Metro 5,URB,Urban Basics,Value Apparel,Metro,972,2016-09-25,0.5090205816742771
+ST012,TinyThreads Northern 1,TNY,TinyThreads,Kids Specialist,Northern,411,2020-03-20,0.5403177834176713
+ST013,TinyThreads Central 2,TNY,TinyThreads,Kids Specialist,Central,338,2020-03-04,0.38404150274470084
+ST014,TinyThreads Coastal 3,TNY,TinyThreads,Kids Specialist,Coastal,500,2020-06-11,0.49345234146441563
+ST015,TinyThreads Western 4,TNY,TinyThreads,Kids Specialist,Western,549,2017-11-14,0.4593348647312583
